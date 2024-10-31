@@ -3,6 +3,8 @@ import "./App.css";
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
+
+  // theme is a string
   const [theme, setTheme] = useState("light");
 
   /*
@@ -16,6 +18,18 @@ function App() {
     // if localStorage exists, update state with that data
     // check if localStorage data exists for theme
     // if localStorage exists, update state with that data
+
+    // Slide 12: Reading Data
+    const storedTodoItems = localStorage.getItem("todoItems");
+    if (storedTodoItems) {
+      setTodoItems(JSON.parse(storedTodoItems));
+    }
+
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      // theme is already a string, so don't need to JSON.parse it
+      setTheme(storedTheme);
+    }
   }, []);
 
   /*
@@ -28,6 +42,12 @@ function App() {
     const item = event.target.todoItem.value;
     const newTodoItems = [...todoItems, item]; // ...spread operator used to copy array https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Copy_an_array
     setTodoItems(newTodoItems);
+
+    // Slide 10: Writing Data
+    // FORMAT: localStorage.setItem(key, value)
+    // FORMAT: localStorage.setItem(stateName, stringified value)
+    localStorage.setItem("todoItems", JSON.stringify(newTodoItems));
+    event.target.todoItem.value = ""; //clear input field after event
   };
 
   /*
@@ -37,6 +57,9 @@ function App() {
   const handleThemeToggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
+    // Slide 10: Writing Data
+    // value is already stringified
+    localStorage.setItem("theme", newTheme);
   };
 
   // We can conditionally set our CSS class based on current theme value
