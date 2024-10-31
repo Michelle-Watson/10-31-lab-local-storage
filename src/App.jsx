@@ -16,15 +16,31 @@ function App() {
   useEffect(() => {
     // check if localStorage data exists for todo items
     // if localStorage exists, update state with that data
-    // check if localStorage data exists for theme
-    // if localStorage exists, update state with that data
 
     // Slide 12: Reading Data
     const storedTodoItems = localStorage.getItem("todoItems");
+    // dog = [];
+    // dog is not a state, so this expression is FALSE
+    const dogDNE = localStorage.getItem("dog");
+    if (dogDNE) {
+      console.log("dog DOES exist");
+    } else {
+      console.log("dog DOES NOT exist");
+    }
+
+    // check if a state exists (this is called 'key' from lecture slides?)
+    // todoItems IS a state, it exists, so its true, so enter if statement
+    console.log("storedTodoItems ", {
+      storedTodoItems,
+    });
     if (storedTodoItems) {
+      // convert state to object so we can use it
+      // Need to convert stringified objects back to proper objects using JSON.parse() before using
       setTodoItems(JSON.parse(storedTodoItems));
     }
 
+    // check if localStorage data exists for theme
+    // if localStorage exists, update state with that dataconst storedTodoItems = localStorage.getItem("todoItems");
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       // theme is already a string, so don't need to JSON.parse it
