@@ -2,7 +2,7 @@
 ## Getting Started
 The starter code provided contains a simple todo application. The goal of this exercise is to update the provided code to use localStorage in order to persist/store data in the browser.
 
-Please download the [starter code](https://api.brainstation.io/content/link/1-04SVwbN6pFsX8EdvZImMQs31ZSuTXpr?instanceId=7048) here.
+Please download the [starter code](./lab-local-storage-starter.zip) here.
 
 Instructions
 App.jsx contains a component which includes:
